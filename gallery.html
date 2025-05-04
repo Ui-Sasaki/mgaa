@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Photo Gallery - Mrs. GREEN APPLE</title>
+  <link rel="stylesheet" href="gallery.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+</head>
+<body>
+    <div class="home-button">
+        <a href="index.html" aria-label="Home"><i class="fas fa-home"></i></a>
+      </div>      
+
+<section class="photo-gallery">
+  <h1>Photo Gallery</h1>
+
+  <!-- Filter Tabs -->
+  <div class="gallery-tabs">
+    <button class="tab-button all active" data-target="all">All</button>
+    <button class="tab-button motoki" data-target="motoki">Motoki Ohmori</button>
+    <button class="tab-button wakai" data-target="wakai">Wakai Hiloto</button>
+    <button class="tab-button ryoka" data-target="ryoka">Ryoka Fujisawa</button>
+  </div>
+
+  <!-- Image Sections -->
+  <div class="gallery-grid all">
+    <img src="images/mga1.jpg" alt="mga1">
+    <img src="images/mga2.jpg" alt="mga2">
+    <img src="images/mga3.jpg" alt="mga3">
+    <img src="images/mga4.jpg" alt="mga4">
+    <img src="images/mga5.jpg" alt="mga5">
+    <img src="images/mga6.jpg" alt="mga6">
+    <img src="images/mga7.jpg" alt="mga7">
+    <img src="images/mga8.jpg" alt="mga8">
+    <img src="images/mga9.jpg" alt="mga9">
+    <img src="images/mga10.jpg" alt="mga10">
+    <img src="images/mga11.jpg" alt="mga11">
+    <img src="images/mga12.jpg" alt="mga12">
+  </div>
+
+  <div class="gallery-grid motoki hidden">
+    <img src="images/motoki1.jpg" alt="Motoki 1">
+    <img src="images/motoki2.jpg" alt="Motoki 2">
+    <img src="images/motoki3.jpg" alt="Motoki 3">
+    <img src="images/motoki4.jpg" alt="Motoki 4">
+    <img src="images/motoki5.jpg" alt="Motoki 5">
+    <img src="images/motoki6.jpg" alt="Motoki 6">
+    <img src="images/motoki7.jpg" alt="Motoki 7">
+    <img src="images/motoki8.jpg" alt="Motoki 8">
+    <img src="images/motoki9.jpg" alt="Motoki 9">
+    <img src="images/motoki10.jpg" alt="Motoki 10">
+    <img src="images/motoki11.jpg" alt="Motoki 11">
+    <img src="images/motoki12.jpg" alt="Motoki 12">
+    
+
+  </div>
+
+  <div class="gallery-grid wakai hidden">
+    <img src="images/wakai1.jpg" alt="Wakai 1">
+    <img src="images/wakai2.jpg" alt="Wakai 2">
+    <img src="images/wakai3.jpg" alt="Wakai 3">
+    <img src="images/wakai4.jpg" alt="Wakai 4">
+    <img src="images/wakai5.jpg" alt="Wakai 5">
+    <img src="images/wakai6.jpg" alt="Wakai 6">
+    <img src="images/wakai7.jpg" alt="Wakai 7">
+    <img src="images/wakai8.jpg" alt="Wakai 8">
+    <img src="images/wakai9.jpg" alt="Wakai 9">
+    <img src="images/wakai10.jpg" alt="Wakai 10">
+    <img src="images/wakai11.jpg" alt="Wakai 11">
+    <img src="images/wakai12.jpg" alt="Wakai 12">
+
+  </div>
+
+  <div class="gallery-grid ryoka hidden">
+    <img src="images/ryoka1.jpg" alt="Ryoka 1">
+    <img src="images/ryoka2.jpg" alt="Ryoka 2">
+    <img src="images/ryoka3.jpg" alt="Ryoka 3">
+    <img src="images/ryoka4.jpg" alt="Ryoka 4">
+    <img src="images/ryoka5.jpg" alt="Ryoka 5">
+    <img src="images/ryoka6.jpg" alt="Ryoka 6">
+    <img src="images/ryoka7.jpg" alt="Ryoka 7">
+    <img src="images/ryoka8.jpg" alt="Ryoka 8">
+    <img src="images/ryoka9.jpg" alt="Ryoka 9">
+    <img src="images/ryoka10.jpg" alt="Ryoka 10">
+    <img src="images/ryoka11.jpg" alt="Ryoka 11">
+    <img src="images/ryoka12.jpg" alt="Ryoka 12">
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox hidden">
+    <span class="close-lightbox" id="closeBtn">✖</span>
+    <span class="lightbox-arrow left" onclick="changeImage(-1)">◀</span>
+    <img id="lightbox-img" src="" alt="Fullscreen Photo" />
+    <span class="lightbox-arrow right" onclick="changeImage(1)">▶</span>
+  </div>
+
+<!-- All JavaScript in one DOM-safe block -->
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+      let currentIndex = 0;
+      let imageList = [];
+  
+      const tabs = document.querySelectorAll('.tab-button');
+      const galleries = document.querySelectorAll('.gallery-grid');
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const closeBtn = document.getElementById('closeBtn');
+  
+      function initLightboxImages() {
+        imageList = [];
+        const activeGallery = document.querySelector('.gallery-grid:not(.hidden)');
+        const images = activeGallery.querySelectorAll('img');
+  
+        images.forEach((img, index) => {
+          imageList.push(img.src);
+          img.onclick = () => openLightbox(index);
+        });
+      }
+  
+      function openLightbox(index) {
+        currentIndex = index;
+        lightboxImg.src = imageList[currentIndex];
+        lightbox.classList.remove('hidden');
+      }
+  
+      function changeImage(direction) {
+        currentIndex = (currentIndex + direction + imageList.length) % imageList.length;
+        lightboxImg.src = imageList[currentIndex];
+      }
+  
+      // 🔄 Close button click handler
+      closeBtn.addEventListener('click', () => {
+        lightbox.classList.add('hidden');
+      });
+  
+      // 🔑 Keyboard support
+      window.addEventListener('keydown', (e) => {
+        if (e.key === "Escape") lightbox.classList.add('hidden');
+        if (e.key === "ArrowRight") changeImage(1);
+        if (e.key === "ArrowLeft") changeImage(-1);
+      });
+  
+      // 🔀 Tabs
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const target = tab.dataset.target;
+  
+          tabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+  
+          galleries.forEach(grid => {
+            if (grid.classList.contains(target)) {
+              grid.classList.remove('hidden');
+            } else {
+              grid.classList.add('hidden');
+            }
+          });
+  
+          initLightboxImages(); // update lightbox images
+        });
+      });
+  
+      initLightboxImages(); // initialize
+    });
+  </script>
+  </body>
+  </html>
