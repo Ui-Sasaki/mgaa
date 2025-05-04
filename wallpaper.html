@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wallpapers - Mrs. GREEN APPLE Fan</title>
+  <link rel="stylesheet" href="wallpaper.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+ 
+</head>
+<body>
+    <div class="home-button">
+        <a href="index.html" aria-label="Home"><i class="fas fa-home"></i></a>
+      </div>
+      
+  <h1>Wallpapers</h1>
+
+  <h2>iPhone Wallpapers</h2>
+  <div class="gallery-grid iphone-grid">
+    <img src="phone/1.jpg" alt="iPhone Wallpaper 1">
+    <img src="phone/2.jpeg" alt="iPhone Wallpaper 2">
+    <img src="phone/3.jpeg" alt="iPhone Wallpaper 3">
+    <img src="phone/4.jpeg" alt="iPhone Wallpaper 4">
+    <img src="phone/5.jpg" alt="iPhone Wallpaper 5">
+    <img src="phone/6.jpg" alt="iPhone Wallpaper 6">
+    <img src="phone/7.jpg" alt="iPhone Wallpaper 7">
+    <img src="phone/8.jpg" alt="iPhone Wallpaper 8">
+    <img src="phone/9.jpg" alt="iPhone Wallpaper 9">
+    <img src="phone/10.jpg" alt="iPhone Wallpaper 10">
+    <img src="phone/11.jpeg" alt="iPhone Wallpaper 11">
+    <img src="phone/12.jpeg" alt="iPhone Wallpaper 12">
+    <img src="phone/13.jpeg" alt="iPhone Wallpaper 13">
+    <img src="phone/14.jpeg" alt="iPhone Wallpaper 14">
+    <img src="phone/15.jpeg" alt="iPhone Wallpaper 15">
+
+
+  </div>
+
+  <h2>Desktop Wallpapers</h2>
+  <div class="pc-grid" id="desktop-wallpapers">
+    <img src="pc/1.jpeg" alt="Desktop Wallpaper 1">
+    <img src="pc/2.jpeg" alt="Desktop Wallpaper 2">
+    <img src="pc/3.jpeg" alt="Desktop Wallpaper 3">
+    <img src="pc/4.jpeg" alt="Desktop Wallpaper 1">
+    <img src="pc/5.jpeg" alt="Desktop Wallpaper 2">
+    <img src="pc/6.jpeg" alt="Desktop Wallpaper 3">
+    <img src="pc/7.jpeg" alt="Desktop Wallpaper 1">
+    <img src="pc/8.jpeg" alt="Desktop Wallpaper 2">
+    <img src="pc/9.jpeg" alt="Desktop Wallpaper 3">
+    <img src="pc/10.jpeg" alt="Desktop Wallpaper 1">
+    <img src="pc/11.jpeg" alt="Desktop Wallpaper 2">
+    <img src="pc/12.jpeg" alt="Desktop Wallpaper 3">
+
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" onclick="closeLightbox()">✖</span>
+    <span class="lightbox-arrow left" onclick="changeImage(-1)">◀</span>
+    <img id="lightbox-img" src="" alt="Fullscreen wallpaper" />
+    <span class="lightbox-arrow right" onclick="changeImage(1)">▶</span>
+  </div>
+
+  <script>
+    let images = [];
+    let currentIndex = 0;
+
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    function openLightbox(index, list) {
+      images = list;
+      currentIndex = index;
+      lightboxImg.src = images[currentIndex].src;
+      lightbox.style.display = 'flex';
+    }
+
+    function closeLightbox() {
+      lightbox.style.display = 'none';
+    }
+
+    function changeImage(direction) {
+      currentIndex = (currentIndex + direction + images.length) % images.length;
+      lightboxImg.src = images[currentIndex].src;
+    }
+
+    document.querySelectorAll('.gallery-grid').forEach(grid => {
+      const imgs = grid.querySelectorAll('img');
+      imgs.forEach((img, index) => {
+        img.addEventListener('click', () => {
+          openLightbox(index, imgs);
+        });
+      });
+    });
+
+    document.addEventListener('keydown', e => {
+      if (lightbox.style.display === 'flex') {
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') changeImage(-1);
+        if (e.key === 'ArrowRight') changeImage(1);
+      }
+    });
+  </script>
+
+</body>
+</html>

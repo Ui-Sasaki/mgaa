@@ -1,0 +1,169 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom, #f6f7f3, #eafaf1);
+    color: #14532d;
+  }
+  
+  .home-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+  }
+  
+  .home-button a {
+    color: #14532d;
+    font-size: 1.8rem;
+    background-color: #f0f5f2;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .home-button a:hover {
+    background-color: #d6f5e3;
+    color: #0e9c49;
+    transform: scale(1.1);
+  }
+  
+  .music-videos {
+    padding: 80px 20px;
+    text-align: center;
+  }
+  
+  .music-videos h1 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+  }
+  
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    padding: 0 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .video-container iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  .video-thumb {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .video-thumb img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+  }
+  
+  .video-thumb:hover img {
+    transform: scale(1.03);
+  }
+  
+  .play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.5rem;
+    color: white;
+    background: rgba(0,0,0,0.6);
+    padding: 10px 16px;
+    border-radius: 50%;
+  }
+  
+  /* Modal overlay */
+  .video-modal {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+  
+  .video-modal-content {
+    position: relative;
+    width: 80%;
+    max-width: 800px;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border-radius: 8px;
+  }
+  
+  .video-modal iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+  }
+  
+  .close-video-modal {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .hidden {
+    display: none;
+  }
+
+  .video-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    cursor: pointer;
+  }
+  
+  .video-container img {
+    width: 100%;
+    display: block;
+    border-radius: 12px;
+    max-height: 200px;
+  }
+  
+  .play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -95%);
+    font-size: 3rem;
+    color: white;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 14px 18px;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .music-videos {
+    background: linear-gradient(145deg, #eafaf1, #f6f7f3);
+    padding: 60px 20px;
+    border-radius: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    max-width: 1200px;
+    margin: 40px auto;
+  }
+  
+  h2{
+    width: 1110px;
+    text-align: center;
+  }
+  

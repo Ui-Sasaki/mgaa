@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Music Videos - Mrs. GREEN APPLE Fan</title>
+  <link rel="stylesheet" href="lyric.css" />
+</head>
+<body>
+
+  <div class="home-button">
+    <a href="index.html" aria-label="Home"><i class="fas fa-home"></i></a>
+  </div>
+
+  <section class="music-videos">
+    <h1>Lyric Videos</h1>
+
+    <div class="video-grid">
+      <!-- Just replace the URLs below with the official video links -->      
+      <div class="video-container">
+        <a href="https://www.youtube.com/watch?v=JdQcqTzR0WE" target="_blank">
+          <img src="lyricimages/ミスか.jpg" alt="Video Title">
+          <div class="play-icon">▶</div>
+        </a>
+        <p class="video-title">「ミスカサズ」　リリックビデオ</p>
+      </div>
+
+      <div class="video-container">
+        <a href="https://www.youtube.com/watch?v=64uuXVMo8c8" target="_blank">
+          <img src="lyricimages/present.jpg" alt="Video Title">
+          <div class="play-icon">▶</div>
+        </a>
+        <p class="video-title">PRESENT (English ver.)Official Lyric Video</p>
+      </div>
+
+      <div class="video-container">
+        <a href="https://www.youtube.com/watch?v=f4k-fTWgjgE" target="_blank">
+          <img src="lyricimages/stard.jpg" alt="Video Title">
+          <div class="play-icon">▶</div>
+        </a>
+        <p class="video-title">「スターダム」Official Lyric Video</p>
+      </div>
+
+      <div class="video-container">
+        <a href="https://www.youtube.com/watch?v=-MKfbxHy_NA" target="_blank">
+          <img src="lyricimages/ao.jpg" alt="Video Title">
+          <div class="play-icon">▶</div>
+        </a>
+        <p class="video-title">「青と夏」 Official Lyric Video</p>
+      </div>
+
+      <div class="video-container">
+        <a href="https://www.youtube.com/watch?v=ukwo2O5SRvw" target="_blank">
+          <img src="lyricimages/cheer.jpg" alt="Video Title">
+          <div class="play-icon">▶</div>
+        </a>
+        <p class="video-title">「CHEERS」Official Live Lyric Video</p>
+      </div>
+
+      <div class="video-container">
+        <a href="https://www.youtube.com/watch?v=rWsiVWlvw2E" target="_blank">
+          <img src="lyricimages/ten.jpg" alt="Video Title">
+          <div class="play-icon">▶</div>
+        </a>
+        <p class="video-title">「点描の唄」Official Live Lyric Video</p>
+      </div>
+
+      <div class="video-container">
+        <a href="https://www.youtube.com/watch?v=7XljD-vLDWA" target="_blank">
+          <img src="lyricimages/proppose.jpg" alt="Video Title">
+          <div class="play-icon">▶</div>
+        </a>
+        <p class="video-title">「ProPose」Official Lyric Video</p>
+      </div>
+
+      <div class="video-container">
+        <a href="https://www.youtube.com/watch?v=sFYQUtSUwoY" target="_blank">
+          <img src="lyricimages/ao.jpg" alt="Video Title">
+          <div class="play-icon">▶</div>
+        </a>
+        <p class="video-title">「青と夏」 Official Lyric Video</p>
+      </div>
+
+      <div class="video-container">
+        <a href="https://www.youtube.com/watch?v=-MKfbxHy_NA" target="_blank">
+          <img src="lyricimages/rev.jpeg" alt="Video Title">
+          <div class="play-icon">▶</div>
+        </a>
+        <p class="video-title">「REVERSE」Official Lyric Video</p>
+      </div>
+
+      <div class="video-container">
+        <a href="https://www.youtube.com/watch?v=vt9YVvYFitg" target="_blank">
+          <img src="lyricimages/soft.jpg" alt="Video Title">
+          <div class="play-icon">▶</div>
+        </a>
+        <p class="video-title">soFt-dRink」Official Lyric Video</p>
+      </div>
+
+      <div class="video-container">
+        <a href="https://www.youtube.com/watch?v=P2GhoO-u0kI" target="_blank">
+          <img src="lyricimages/tuki.jpg" alt="Video Title">
+          <div class="play-icon">▶</div>
+        </a>
+        <p class="video-title">ツキマシテハ」Official Lyric Video</p>
+      </div>
+
+      <div class="video-container">
+        <a href="https://www.youtube.com/watch?v=o-JkzX3gJNM" target="_blank">
+          <img src="lyricimages/hug.jpg" alt="Video Title">
+          <div class="play-icon">▶</div>
+        </a>
+        <p class="video-title">「Hug」Official Lyric Video</p>
+      </div>
+
+    <div class="video-container">
+        <a href="https://www.youtube.com/watch?v=9qG-560YKP0" target="_blank">
+          <img src="lyricimages/darlin.jpg" alt="Video Title">
+          <div class="play-icon">▶</div>
+        </a>
+        <p class="video-title">「「ダーリン」Official Lyric Video</p>
+      </div>
+
+    </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
+
+<div id="video-modal" class="video-modal hidden">
+  <div class="video-modal-content">
+    <span class="close-video-modal" onclick="closeVideoModal()">✖</span>
+    <iframe id="modal-video" frameborder="0" allowfullscreen allow="autoplay"></iframe>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('video-modal');
+    const modalVideo = document.getElementById('modal-video');
+    const videoThumbs = document.querySelectorAll('.video-thumb');
+
+    videoThumbs.forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        const videoId = thumb.getAttribute('data-video');
+        modalVideo.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+        modal.classList.remove('hidden');
+      });
+    });
+
+    window.closeVideoModal = function () {
+      modal.classList.add('hidden');
+      modalVideo.src = '';
+    };
+
+    // Optional: Close modal on ESC key
+    window.addEventListener('keydown', (e) => {
+      if (e.key === "Escape") closeVideoModal();
+    });
+  });
+</script>
+
+</body>
+</html>
